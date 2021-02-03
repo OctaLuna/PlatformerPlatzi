@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovementGame : MonoBehaviour
 {
     //VARIABLES//
     //estamos haciendo referencia al RigidBody2D del Player
