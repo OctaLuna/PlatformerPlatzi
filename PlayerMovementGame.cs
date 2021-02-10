@@ -17,6 +17,7 @@ public class PlayerMovementGame : MonoBehaviour
     public Animator PlayerAnimator;
 
 
+
     // Update is called once per frame
     void Update()
     {
@@ -59,6 +60,7 @@ public class PlayerMovementGame : MonoBehaviour
                 isGrounded = false;
                 //
                 PlayerAnimator.SetTrigger("Jump");
+                GetComponent<AudioSource>().Play();
             }    
         }
         

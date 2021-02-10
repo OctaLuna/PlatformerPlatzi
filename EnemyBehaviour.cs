@@ -16,6 +16,8 @@ public class EnemyBehaviour : MonoBehaviour
     Animator EnemyAnim;
     //Estamos haciendo referencia al sistema de particulas
     ParticleSystem EnemyParticle;
+    //Esto es para el sonido de la muerte del enemigo
+    AudioSource EnemyDeadAudio;
     
     
     // Start is called before the first frame update
@@ -25,8 +27,10 @@ public class EnemyBehaviour : MonoBehaviour
         enemyRB = GetComponent<Rigidbody2D>();
         //enemyAnim es para llamar al animator del enemy
         EnemyAnim = GetComponent<Animator>();
-        //
+        //Esto es para llamar a las particulas de muerte del enemigo
         EnemyParticle = GameObject.Find("EnemyParticle").GetComponent<ParticleSystem>();
+        //Esto es para el audio del enemigo que se encuantra en el gameObject padre
+        EnemyDeadAudio = GetComponentInParent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -67,8 +71,12 @@ public class EnemyBehaviour : MonoBehaviour
     //esto es para matar al enemy, cuando acabe la animacion del enemigo sucedera esto
     public void DisableEnemy(){
         gameObject.SetActive(false);
+        //Esto es para que las particulas tengan el mismo tranform del enemigo
         EnemyParticle.transform.position = transform.position;
+        //Esto es para iniciar las particulas del enemigo
         EnemyParticle.Play();
+        //Esto es para iniciar el audio del enemigo
+        EnemyDeadAudio.Play();
     }
     
 
