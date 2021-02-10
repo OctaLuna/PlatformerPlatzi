@@ -12,12 +12,19 @@ public class Collectable : MonoBehaviour
     public Text CollectableText;
     //Este es el sistema de particulas del juego
     ParticleSystem collectablePart;
+    //Estamos implementando el sonido a las monedas
+    AudioSource CollectableAudio;
+
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         //Estamos haciendo referencia al gameObject de particulas de las monedas
         collectablePart = GameObject.Find("CollectableParticle").GetComponent<ParticleSystem>();
+        //Estamos llamando al AudioSourse del GameObject del padre del objeto
+        CollectableAudio = GetComponentInParent<AudioSource>();   
     }
 
     // Update is called once per frame
@@ -40,6 +47,9 @@ public class Collectable : MonoBehaviour
             CollectableQuantity++;
             //Esto es para imprimir en el UI el contador de monedas
             CollectableText.text = CollectableQuantity.ToString();
+            //Estamos poniendo Play a la funcion AudioSourse 
+            CollectableAudio.Play();
+            
         }
         
     }
