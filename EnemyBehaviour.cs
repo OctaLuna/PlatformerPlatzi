@@ -14,6 +14,8 @@ public class EnemyBehaviour : MonoBehaviour
     public float Speed = .3f;
     //Estamos haciendo referencia a la animacion del enemy
     Animator EnemyAnim;
+    //Estamos haciendo referencia al sistema de particulas
+    ParticleSystem EnemyParticle;
     
     
     // Start is called before the first frame update
@@ -23,6 +25,8 @@ public class EnemyBehaviour : MonoBehaviour
         enemyRB = GetComponent<Rigidbody2D>();
         //enemyAnim es para llamar al animator del enemy
         EnemyAnim = GetComponent<Animator>();
+        //
+        EnemyParticle = GameObject.Find("EnemyParticle").GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -63,6 +67,8 @@ public class EnemyBehaviour : MonoBehaviour
     //esto es para matar al enemy, cuando acabe la animacion del enemigo sucedera esto
     public void DisableEnemy(){
         gameObject.SetActive(false);
+        EnemyParticle.transform.position = transform.position;
+        EnemyParticle.Play();
     }
     
 
